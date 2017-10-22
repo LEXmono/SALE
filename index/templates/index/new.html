@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center"><h1>SALE</h1></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center"><p>Secured Application Login Encryption</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <!-- Form New Credential -->
+            <form>
+                <p class="h5 text-center mb-4">Save a New Credential</p>
+
+                <div class="md-form p-2">
+                    <i class="prefix grey-text"></i>
+                    <input type="text" id="form3" class="form-control" placeholder="App1 DB Root Password">
+                    <label for="form3">Credential Friendly Name</label>
+                </div>
+
+                <div class="md-form p-2">
+                    <i class="prefix grey-text"></i>
+                    <input type="text" id="form2" class="form-control" placeholder="com.example.api.db.root">
+                    <label for="form2">Programmatic Name</label>
+                </div>
+
+                <div class="form-group p-2">
+                    <div class="row">
+                        <div class="col-4">
+                            <input name="cred_radio" type="radio" class="with-gap" id="cred_radio" value="credential" onclick="javascript:yesnoCheck();">
+                            <label for="cred_radio">Username/Password Pair</label>
+                        </div>
+                        <div class="col-4">
+                            <input name="sym_radio" type="radio" class="with-gap" id="sym_radio" value="sym_key" onclick="javascript:yesnoCheck();">
+                            <label for="sym_radio">Symmetrical Key</label>
+                        </div>
+                        <div class="col-4">
+                            <input name="asym_radio" type="radio" class="with-gap" id="asym_radio" value="async_key" onclick="javascript:yesnoCheck();">
+                            <label for="asym_radio">Asymmetrical Key</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cred_inputs" style="display:none">
+                    <div class="md-form">
+                        <i class="prefix grey-text"></i>
+                        <input type="text" id="user" class="form-control" placeholder="root">
+                        <label for="user">User Name</label>
+                    </div>
+                    <div class="md-form p-2">
+                        <i class="prefix grey-text"></i>
+                        <input type="password" id="password" class="form-control" placeholder="****">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div id="sym_inputs" style="display:none">
+                    <div class="md-form">
+                        <i class="prefix grey-text"></i>
+                        <input type="text" id="user" class="form-control" placeholder="root">
+                        <label for="user">Symmetrical Key</label>
+                    </div>
+                    <div class="md-form p-2">
+                        <i class="prefix grey-text"></i>
+                        <input type="password" id="password" class="form-control" placeholder="****">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div id="asym_inputs" style="display:none">
+                    <div class="md-form">
+                        <i class="prefix grey-text"></i>
+                        <input type="text" id="user" class="form-control" placeholder="root">
+                        <label for="user">Asymmetrical Key</label>
+                    </div>
+                    <div class="md-form p-2">
+                        <i class="prefix grey-text"></i>
+                        <input type="password" id="password" class="form-control" placeholder="****">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="text-center p-2">
+                    <button class="btn btn-indigo">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+                </div>
+
+            </form>
+            <!-- Form subscription -->
+        </div>
+    </div>
+    <script type="text/javascript">
+        function yesnoCheck() {
+            if (document.getElementById('cred_radio').checked) {
+                document.getElementById('cred_inputs').style.display = 'block';
+                document.getElementById('sym_inputs').style.display = 'none';
+                document.getElementById('asym_inputs').style.display = 'none';
+            }
+            else if (document.getElementById('sym_radio').checked) {
+                document.getElementById('sym_inputs').style.display = 'block';
+                document.getElementById('cred_inputs').style.display = 'none';
+                document.getElementById('asym_inputs').style.display = 'none';
+            }
+            else if (document.getElementById('asym_radio').checked) {
+                document.getElementById('asym_inputs').style.display = 'block';
+                document.getElementById('sym_inputs').style.display = 'none';
+                document.getElementById('cred_inputs').style.display = 'none';
+            }
+            else {
+                document.getElementById('cred_inputs').style.display = 'none';
+                document.getElementById('sym_inputs').style.display = 'none';
+                document.getElementById('asym_inputs').style.display = 'none';
+            }
+
+        }
+        $(function() {
+            $("[name=toggler]").click(function(){
+                    $('.toHide').hide();
+                    $("#blk-"+$(this).val()).show('slow');
+            });
+         });
+    </script>
+{% endblock %}

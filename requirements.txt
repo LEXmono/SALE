@@ -1,0 +1,8 @@
+Django
+psycopg2
+requests
+python-dateutil>=1.5
+requests-oauthlib>=0.7
+cherrypy>=3.7,<3.9
+tox>=1.8,<2.2
+
